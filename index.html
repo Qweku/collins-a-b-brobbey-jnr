@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collins Adu-Bempah Brobbey Jnr. — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #070c18;
+      --bg-2: #0b1426;
+      --surface: #111d33;
+      --surface-2: #16253f;
+      --line: rgba(200, 155, 60, 0.18);
+      --line-soft: rgba(237, 239, 243, 0.06);
+      --text: #eef0f5;
+      --text-dim: #8e9bb3;
+      --text-faint: #56647e;
+      --gold: #d4af37;
+      --gold-soft: rgba(212, 175, 55, 0.12);
+      --teal: #3bb8a3;
+      --teal-soft: rgba(59, 184, 163, 0.12);
+      --rose: #d47b7e;
+      --rose-soft: rgba(212, 123, 126, 0.12);
+      --radius: 6px;
+      --shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.02) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(59, 184, 163, 0.02) 0%, transparent 40%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: #070c18;
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 0 18px;
+      }
+    }
+
+    /* reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      background: rgba(7, 12, 24, 0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-mark {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* HERO */
+    header.hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 100px;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: block;
+      margin-left: auto;
+    }
+
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+
+      .hero-image img {
+        max-width: 260px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-ctas {
+        justify-content: center;
+      }
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 5px var(--teal-soft);
+    }
+
+    h1.name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      max-width: 14ch;
+    }
+
+    h1.name span {
+      background: linear-gradient(135deg, var(--gold), #e6c065);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .role-line {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+      color: var(--text-dim);
+      margin-top: 20px;
+      max-width: 640px;
+    }
+
+    .role-line .div {
+      color: var(--gold);
+      margin: 0 12px;
+    }
+
+    .hero-desc {
+      margin-top: 20px;
+      max-width: 560px;
+      color: var(--text-dim);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      margin-top: 38px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #070c18;
+      border-color: var(--gold);
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: #e0b84a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-ghost {
+      color: var(--text);
+      border-color: var(--line-soft);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-soft);
+    }
+
+    /* abstract hero glow */
+    .hero-glow {
+      position: absolute;
+      right: -8%;
+      top: -10%;
+      width: 60%;
+      height: 80%;
+      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ticker-strip {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft);
+      background: var(--bg-2);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 14px 0;
+    }
+
+    .ticker-track {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--text-faint);
+      animation: scroll-left 36s linear infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ticker-track {
+        animation: none;
+      }
+    }
+
+    .ticker-track span {
+      margin: 0 24px;
+    }
+
+    .ticker-track .accent {
+      color: var(--gold);
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* sections */
+    section {
+      padding: 120px 0;
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .sec-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .sec-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+    }
+
+    .sec-line {
+      flex: 1;
+      height: 1px;
+      background: var(--line-soft);
+    }
+
+    .sec-sub {
+      color: var(--text-dim);
+      max-width: 58ch;
+      margin-bottom: 64px;
+      font-size: 1.05rem;
+    }
+
+    /* case studies */
+    .case {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .case:last-child {
+      border-bottom: none;
+    }
+
+    .case.flip .case-visual {
+      order: 2;
+    }
+
+    .case.flip .case-text {
+      order: 1;
+    }
+
+    @media (max-width: 860px) {
+
+      .case,
+      .case.flip .case-visual,
+      .case.flip .case-text {
+        grid-template-columns: 1fr;
+        order: initial;
+      }
+
+      .case {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .case-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-soft);
+      padding: 6px 14px;
+      border-radius: 30px;
+      margin-bottom: 18px;
+    }
+
+    .case-tag.teal {
+      color: var(--teal);
+      background: var(--teal-soft);
+    }
+
+    .case-tag.rose {
+      color: var(--rose);
+      background: var(--rose-soft);
+    }
+
+    .case h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .case p {
+      color: var(--text-dim);
+      font-size: 1rem;
+      margin-bottom: 20px;
+      max-width: 48ch;
+    }
+
+    .case-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      padding: 5px 14px;
+      border: 1px solid var(--line-soft);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .case-visual {
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .case-visual:hover {
+      border-color: var(--gold);
+      transform: scale(1.01);
+    }
+
+    .case-visual svg {
+      width: 100%;
+      height: auto;
+      max-width: 420px;
+    }
+
+    /* lab grid */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .lab-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .lab-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lab-card {
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      padding: 24px 24px 28px;
+      transition: border-color 0.25s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .lab-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+    }
+
+    .lab-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--gold-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .lab-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .lab-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .lab-card p {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .lab-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .lab-tags span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--text-faint);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .lab-tags span:not(:last-child)::after {
+      content: '·';
+      margin-left: 6px;
+      color: var(--text-faint);
+    }
+
+    /* background */
+    .bg-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+
+    @media (max-width: 800px) {
+      .bg-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .bg-block h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .bg-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px dashed var(--line-soft);
+      font-size: 0.92rem;
+    }
+
+    .bg-item:last-child {
+      border-bottom: none;
+    }
+
+    .bg-role {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .bg-org {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+
+    .bg-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-faint);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .stack-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    /* footer */
+    footer {
+      padding: 120px 0 60px;
+      text-align: center;
+      position: relative;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .contact-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 20px;
+    }
+
+    footer h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      max-width: 14ch;
+      margin: 0 auto 32px;
+      line-height: 1.08;
+    }
+
+    footer h2 span {
+      background: linear-gradient(135deg, var(--gold), #e6c065);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-list {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 8px;
+    }
+
+    .contact-list a {
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: all 0.2s ease;
+    }
+
+    .contact-list a:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .foot-note {
+      margin-top: 72px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-faint);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <div class="nav-mark">CB / PORTFOLIO</div>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#lab">Lab</a>
+        <a href="#background">Background</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <div class="eyebrow">Open to remote &amp; contract work</div>
+        <h1 class="name">Collins Adu-Bempah <span>Brobbey Jnr.</span></h1>
+        <div class="role-line">Software Engineer <span class="div">/</span> Systems that move money, votes &amp; data
+          safely</div>
+        <p class="hero-desc">I design and build backend architecture and mobile apps — payment reconciliation,
+          tamper-evident voting infrastructure, and the occasional product idea I build just to see if it works. This page
+          is a walk through the ones worth showing.</p>
+        <div class="hero-ctas">
+          <a href="#work" class="btn btn-primary">See the work</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="profile.jpg" alt="Collins Adu-Bempah Brobbey Jnr." />
+      </div>
+    </div>
+  </header>
+
+  <div class="ticker-strip" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="accent">HASH-CHAINED LEDGERS</span><span>·</span>
+      <span>PAYMENT RECONCILIATION</span><span>·</span>
+      <span class="accent">FLUTTER MOBILE</span><span>·</span>
+      <span>LARAVEL SYSTEMS</span><span>·</span>
+      <span class="accent">MOBILE MONEY</span><span>·</span>
+      <span>SECURE VOTING</span><span>·</span>
+      <span class="accent">API INTEGRATION</span><span>·</span>
+      <span>HASH-CHAINED LEDGERS</span><span>·</span>
+      <span>PAYMENT RECONCILIATION</span><span>·</span>
+      <span class="accent">FLUTTER MOBILE</span><span>·</span>
+      <span>LARAVEL SYSTEMS</span><span>·</span>
+      <span class="accent">MOBILE MONEY</span><span>·</span>
+      <span>SECURE VOTING</span><span>·</span>
+      <span class="accent">API INTEGRATION</span>
+    </div>
+  </div>
+
+  <main class="wrap">
+
+    <section id="work">
+      <div class="sec-head reveal">
+        <span class="sec-num">WORK / 01–03</span>
+        <h2 class="sec-title">Selected Work</h2>
+        <div class="sec-line"></div>
+      </div>
+      <p class="sec-sub reveal">Three builds that show the range: security-critical infrastructure, financial
+        reconciliation, and product design for a real-world savings problem.</p>
+
+      <!-- CASE 1: E-Voting -->
+      <div class="case reveal">
+        <div class="case-text">
+          <span class="case-tag">Security · University Systems</span>
+          <h3>Tamper-Evident E-Voting Platform</h3>
+          <p>Built for university-wide student elections. Every vote is written into a hash-chained ledger — each record
+            cryptographically linked to the one before it — so any tampering breaks the chain and is immediately
+            detectable. Voters authenticate through single-use magic links, with results and reminders delivered through
+            queued SMS and email jobs.</p>
+          <div class="case-stack">
+            <span class="tag">Laravel 13</span><span class="tag">Hash-chained ledger</span><span class="tag">Magic-link
+              auth</span>
+            <span class="tag">mNotify SMS</span><span class="tag">Gmail SMTP</span><span class="tag">Queued jobs</span>
+          </div>
+        </div>
+        <div class="case-visual">
+          <svg viewBox="0 0 480 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="dot" markerWidth="6" markerHeight="6" refX="3" refY="3">
+                <circle cx="3" cy="3" r="2.4" fill="#d4af37" />
+              </marker>
+            </defs>
+            <line x1="60" y1="120" x2="420" y2="120" stroke="#56647e" stroke-opacity="0.3" stroke-width="1.5"
+              stroke-dasharray="4 5" />
+            <g font-family="JetBrains Mono, monospace" font-size="9" fill="#8e9bb3">
+              <rect x="30" y="88" width="74" height="64" rx="6" fill="#111d33" stroke="#3bb8a3" stroke-opacity="0.6"
+                stroke-width="1.6" />
+              <text x="67" y="72" text-anchor="middle" fill="#3bb8a3">BLOCK 01</text>
+              <line x1="46" y1="110" x2="88" y2="110" stroke="#3bb8a3" stroke-opacity="0.4" />
+              <line x1="46" y1="122" x2="78" y2="122" stroke="#3bb8a3" stroke-opacity="0.3" />
+              <line x1="46" y1="134" x2="82" y2="134" stroke="#3bb8a3" stroke-opacity="0.3" />
+              <rect x="140" y="88" width="74" height="64" rx="6" fill="#111d33" stroke="#d4af37" stroke-opacity="0.6"
+                stroke-width="1.6" />
+              <text x="177" y="72" text-anchor="middle" fill="#d4af37">BLOCK 02</text>
+              <line x1="156" y1="110" x2="198" y2="110" stroke="#d4af37" stroke-opacity="0.4" />
+              <line x1="156" y1="122" x2="188" y2="122" stroke="#d4af37" stroke-opacity="0.3" />
+              <line x1="156" y1="134" x2="192" y2="134" stroke="#d4af37" stroke-opacity="0.3" />
+              <rect x="250" y="88" width="74" height="64" rx="6" fill="#111d33" stroke="#3bb8a3" stroke-opacity="0.6"
+                stroke-width="1.6" />
+              <text x="287" y="72" text-anchor="middle" fill="#3bb8a3">BLOCK 03</text>
+              <line x1="266" y1="110" x2="308" y2="110" stroke="#3bb8a3" stroke-opacity="0.4" />
+              <line x1="266" y1="122" x2="298" y2="122" stroke="#3bb8a3" stroke-opacity="0.3" />
+              <line x1="266" y1="134" x2="302" y2="134" stroke="#3bb8a3" stroke-opacity="0.3" />
+              <rect x="360" y="82" width="78" height="76" rx="6" fill="#0b1f1a" stroke="#3bb8a3" stroke-width="2" />
+              <text x="399" y="68" text-anchor="middle" fill="#3bb8a3" font-weight="600">VERIFIED</text>
+              <path d="M384 118 l8 8 l18 -20" stroke="#3bb8a3" stroke-width="3" fill="none" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <line x1="104" y1="120" x2="140" y2="120" stroke="#8e9bb3" stroke-width="1.5" marker-end="url(#dot)" />
+              <line x1="214" y1="120" x2="250" y2="120" stroke="#8e9bb3" stroke-width="1.5" marker-end="url(#dot)" />
+              <line x1="324" y1="120" x2="360" y2="120" stroke="#8e9bb3" stroke-width="1.5" marker-end="url(#dot)" />
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- CASE 2: Payment Reconciliation -->
+      <div class="case flip reveal">
+        <div class="case-text">
+          <span class="case-tag teal">Fintech · Payments</span>
+          <h3>Cross-Bank Payment Verification Tool</h3>
+          <p>A reconciliation layer that sits between transactions and two separate bank APIs — Prudential Bank and
+            CalBank — each with different response shapes. An adapter pattern normalizes both into a single
+            VerificationResult, so the rest of the application never has to know which bank it's talking to.</p>
+          <div class="case-stack">
+            <span class="tag">Laravel</span><span class="tag">Adapter pattern</span><span class="tag">Prudential Bank
+              API</span>
+            <span class="tag">CalBank API</span><span class="tag">DTO normalization</span>
+          </div>
+        </div>
+        <div class="case-visual">
+          <svg viewBox="0 0 480 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g font-family="JetBrains Mono, monospace" font-size="10">
+              <rect x="30" y="50" width="120" height="44" rx="6" fill="#111d33" stroke="#56647e" stroke-opacity="0.5"
+                stroke-width="1.5" />
+              <text x="90" y="78" text-anchor="middle" fill="#8e9bb3">BANK A API</text>
+              <rect x="30" y="140" width="120" height="44" rx="6" fill="#111d33" stroke="#56647e" stroke-opacity="0.5"
+                stroke-width="1.5" />
+              <text x="90" y="168" text-anchor="middle" fill="#8e9bb3">BANK B API</text>
+              <path d="M150 72 C 210 72, 210 120, 250 120" stroke="#d4af37" stroke-width="1.6" fill="none" />
+              <path d="M150 162 C 210 162, 210 120, 250 120" stroke="#d4af37" stroke-width="1.6" fill="none" />
+              <polygon points="250,88 320,88 340,120 320,152 250,152 230,120" fill="#1a2942" stroke="#d4af37"
+                stroke-width="1.8" />
+              <text x="285" y="116" text-anchor="middle" fill="#d4af37" font-weight="600">ADAPTER</text>
+              <text x="285" y="132" text-anchor="middle" fill="#d4af37" font-size="8">NORMALIZE</text>
+              <line x1="340" y1="120" x2="380" y2="120" stroke="#3bb8a3" stroke-width="1.8" />
+              <rect x="380" y="88" width="72" height="64" rx="6" fill="#0b1f1a" stroke="#3bb8a3" stroke-width="1.8" />
+              <text x="416" y="110" text-anchor="middle" fill="#3bb8a3" font-size="8">RESULT</text>
+              <path d="M398 126 l8 8 l16 -18" stroke="#3bb8a3" stroke-width="2.6" fill="none" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M398 140 l8 8 l16 -18" stroke="#3bb8a3" stroke-width="2.6" fill="none" stroke-linecap="round"
+                stroke-linejoin="round" opacity="0.7" />
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- CASE 3: Susu App -->
+      <div class="case reveal">
+        <div class="case-text">
+          <span class="case-tag rose">Product · Mobile Money</span>
+          <h3>Susu Digital Savings Circles</h3>
+          <p>A mobile app concept and MVP plan for digitizing susu — the rotating group savings circles common across
+            West Africa — with Mobile Money built in from day one, so contributions, payout order, and group trust are
+            tracked digitally instead of on paper.</p>
+          <div class="case-stack">
+            <span class="tag">Flutter</span><span class="tag">Mobile Money APIs</span><span class="tag">Group ledger
+              design</span><span class="tag">MVP planning</span>
+          </div>
+        </div>
+        <div class="case-visual">
+          <svg viewBox="0 0 480 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g>
+              <circle cx="180" cy="120" r="72" fill="none" stroke="#56647e" stroke-opacity="0.3"
+                stroke-dasharray="3 5" />
+              <circle cx="180" cy="120" r="30" fill="#111d33" stroke="#d4af37" stroke-width="2" />
+              <text x="180" y="117" text-anchor="middle" fill="#d4af37" font-family="JetBrains Mono, monospace"
+                font-size="13" font-weight="600">GH₵</text>
+              <text x="180" y="132" text-anchor="middle" fill="#8e9bb3" font-family="JetBrains Mono, monospace"
+                font-size="8">POOL</text>
+              <circle cx="180" cy="44" r="13" fill="#0b1f1a" stroke="#3bb8a3" stroke-width="1.8" />
+              <circle cx="246" cy="72" r="13" fill="#0b1f1a" stroke="#3bb8a3" stroke-width="1.8" />
+              <circle cx="264" cy="138" r="13" fill="#0b1f1a" stroke="#3bb8a3" stroke-width="1.8" />
+              <circle cx="216" cy="190" r="13" fill="#0b1f1a" stroke="#3bb8a3" stroke-width="1.8" />
+              <circle cx="144" cy="190" r="13" fill="#0b1f1a" stroke="#3bb8a3" stroke-width="1.8" />
+              <circle cx="96" cy="138" r="13" fill="#0b1f1a" stroke="#3bb8a3" stroke-width="1.8" />
+              <circle cx="114" cy="72" r="13" fill="#0b1f1a" stroke="#3bb8a3" stroke-width="1.8" />
+              <g stroke="#3bb8a3" stroke-opacity="0.3" stroke-width="1.2">
+                <line x1="180" y1="57" x2="180" y2="90" />
+                <line x1="235" y1="80" x2="200" y2="104" />
+                <line x1="253" y1="134" x2="212" y2="126" />
+                <line x1="210" y1="180" x2="192" y2="146" />
+                <line x1="150" y1="180" x2="168" y2="146" />
+                <line x1="104" y1="134" x2="148" y2="126" />
+                <line x1="125" y1="80" x2="160" y2="104" />
+              </g>
+            </g>
+            <rect x="360" y="56" width="76" height="128" rx="12" fill="#111d33" stroke="#8e9bb3" stroke-opacity="0.4"
+              stroke-width="1.8" />
+            <rect x="372" y="72" width="52" height="80" rx="4" fill="#070c18" />
+            <circle cx="398" cy="166" r="6" fill="none" stroke="#8e9bb3" stroke-opacity="0.5" stroke-width="1.5" />
+            <rect x="380" y="82" width="36" height="6" rx="2" fill="#3bb8a3" fill-opacity="0.6" />
+            <rect x="380" y="94" width="24" height="5" rx="2" fill="#56647e" fill-opacity="0.5" />
+            <rect x="380" y="108" width="36" height="30" rx="4" fill="#0b1f1a" stroke="#3bb8a3" stroke-opacity="0.4" />
+            <text x="398" y="128" text-anchor="middle" fill="#3bb8a3" font-family="JetBrains Mono, monospace"
+              font-size="9">PAID</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="lab">
+      <div class="sec-head reveal">
+        <span class="sec-num">LAB / 07 BUILDS</span>
+        <h2 class="sec-title">More Builds</h2>
+        <div class="sec-line"></div>
+      </div>
+      <p class="sec-sub reveal">Smaller projects, tools, and experiments — spanning e-commerce, research administration,
+        and a bit of fun on the side.</p>
+
+      <div class="lab-grid">
+        <div class="lab-card reveal">
+          <div class="lab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.8">
+              <path d="M3 9l9-6 9 6v10a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z" />
+            </svg></div>
+          <h4>E-Commerce Platform</h4>
+          <p>Laravel 13 storefront with Paystack payments, planned from a fully specified 17-table schema before any
+            code was written.</p>
+          <div class="lab-tags"><span>Laravel</span><span>Paystack</span><span>Spatie RBAC</span></div>
+        </div>
+        <div class="lab-card reveal">
+          <div class="lab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.8">
+              <path d="M9 12l2 2 4-4M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg></div>
+          <h4>IRB Research Portal</h4>
+          <p>Ongoing maintenance and extension of the university's ethics review portal, including the NMIMR application
+            subsystem.</p>
+          <div class="lab-tags"><span>Laravel</span><span>MySQL</span><span>Workflow logic</span></div>
+        </div>
+        <div class="lab-card reveal">
+          <div class="lab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.8">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5zm4 2v5c3 3 11 3 14 0v-5" />
+            </svg></div>
+          <h4>PhD Scholarship Portal</h4>
+          <p>Application system for the College of Education, built on Laravel 13 with Blade and Bootstrap 5.</p>
+          <div class="lab-tags"><span>Laravel 13</span><span>Blade</span><span>Bootstrap 5</span></div>
+        </div>
+        <div class="lab-card reveal">
+          <div class="lab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.8">
+              <path d="M5 12.5a7.5 7.5 0 0115 0M12 19v2M8 21h8" />
+              <circle cx="12" cy="12.5" r="2.2" />
+            </svg></div>
+          <h4>WiFi Transfer Pro</h4>
+          <p>Flutter file-transfer app running a local HTTP server, with Riverpod state management and ObjectBox
+            storage.</p>
+          <div class="lab-tags"><span>Flutter</span><span>Riverpod</span><span>ObjectBox</span></div>
+        </div>
+        <div class="lab-card reveal">
+          <div class="lab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.8">
+              <path d="M6 3h9l5 5v13a1 1 0 01-1 1H6a1 1 0 01-1-1V4a1 1 0 011-1z" />
+              <path d="M9 12h6M9 16h6M9 8h2" />
+            </svg></div>
+          <h4>Scroll-Feed Arcade</h4>
+          <p>A Flutter app bundling ~13 self-contained mini-games, built with CustomPainter and delta-time movement.</p>
+          <div class="lab-tags"><span>Flutter</span><span>CustomPainter</span></div>
+        </div>
+        <div class="lab-card reveal">
+          <div class="lab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.8">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z" />
+            </svg></div>
+          <h4>Bilingual Hymnal Digitization</h4>
+          <p>Converted a 195-hymn Twi/English hymnal PDF into structured JSON using column-aware extraction.</p>
+          <div class="lab-tags"><span>Python</span><span>PDF parsing</span><span>Data structuring</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="background">
+      <div class="sec-head reveal">
+        <span class="sec-num">APPENDIX</span>
+        <h2 class="sec-title">Background</h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="bg-grid">
+        <div class="bg-block reveal">
+          <h4>Experience</h4>
+          <div class="bg-item">
+            <div>
+              <div class="bg-role">Senior ICT Assistant (Software Engineer)</div>
+              <div class="bg-org">University of Ghana, IT Directorate</div>
+            </div>
+            <div class="bg-date">DEC 2024 —<br>PRESENT</div>
+          </div>
+          <div class="bg-item">
+            <div>
+              <div class="bg-role">IT Support Consultant</div>
+              <div class="bg-org">University of Ghana Computing Systems</div>
+            </div>
+            <div class="bg-date">APR 2023 —<br>APR 2024</div>
+          </div>
+          <div class="bg-item">
+            <div>
+              <div class="bg-role">Mobile Software Developer</div>
+              <div class="bg-org">Interface Financial Technologies</div>
+            </div>
+            <div class="bg-date">NOV 2020 —<br>JUN 2024</div>
+          </div>
+          <div class="bg-item">
+            <div>
+              <div class="bg-role">Web Developer (National Service)</div>
+              <div class="bg-org">University of Ghana Computing Systems</div>
+            </div>
+            <div class="bg-date">SEP 2019 —<br>AUG 2020</div>
+          </div>
+        </div>
+        <div class="bg-block reveal">
+          <h4>Education</h4>
+          <div class="bg-item">
+            <div>
+              <div class="bg-role">MSc, Information &amp; Communication Technology</div>
+              <div class="bg-org">GIMPA</div>
+            </div>
+            <div class="bg-date">2021 — 2023</div>
+          </div>
+          <div class="bg-item">
+            <div>
+              <div class="bg-role">BSc, Physics with Electronics</div>
+              <div class="bg-org">KNUST</div>
+            </div>
+            <div class="bg-date">2015 — 2019</div>
+          </div>
+
+          <h4 style="margin-top:40px;">Core Stack</h4>
+          <div class="stack-cloud">
+            <span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Flutter</span><span
+              class="tag">Dart</span>
+            <span class="tag">MySQL</span><span class="tag">WordPress</span>
+            <span class="tag">Riverpod</span><span class="tag">Paystack</span><span class="tag">Git</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="contact-eyebrow">Contact</div>
+      <h2>Let's build something <span>worth shipping.</span></h2>
+      <div class="contact-list">
+        <a href="mailto:brobbeycollins96@gmail.com">brobbeycollins96@gmail.com</a>
+        <a href="tel:+233246013840">+233 246013840</a>
+        <a href="tel:+233577069551">+233 577069551</a>
+        <a href="https://www.linkedin.com/in/collins-adu-bempah-brobbey-jnr-489b4b1b9/" target="_blank">LinkedIn:
+          Collins A.B Brobbey Jnr</a>
+        <a href="https://github.com/Qweku" target="_blank">GitHub: Qweku</a>
+      </div>
+      <div class="foot-note">COLLINS ADU-BEMPAH BROBBEY JNR. — SOFTWARE ENGINEER — ACCRA, GHANA — © 2026</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(el => el.classList.add('in'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(el => io.observe(el));
+    })();
+  </script>
+</body>
+
+</html>
